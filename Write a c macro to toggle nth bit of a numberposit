@@ -1,0 +1,12 @@
+#include <stdio.h>
+#define toggle(n,pos) (n^=(1<<pos))
+int main() {
+    // Write C code here
+    int n,pos;
+    printf("enter the value of n and pos:");
+    scanf("%d%d",&n,&pos);
+    printf("result=%d",toggle(n,pos));
+    
+
+    return 0;
+}
