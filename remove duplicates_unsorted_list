@@ -1,0 +1,104 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+struct node *head=NULL,*tail=NULL,*current,*newnode,*ptr,*temp;
+void create_list(int data1)
+{
+    newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=data1;
+    newnode->next=NULL;
+    if(head==NULL)
+    {
+        head=tail=newnode;
+    }
+    tail->next=newnode;
+    tail=newnode;
+}
+int count_nodes()
+{
+    int count=0;
+    if(head==NULL)
+    {
+        printf("list is empty\n");
+        return 0;
+    }
+    temp=head;
+    while(temp!=0)
+    {
+        ++count;
+        temp=temp->next;
+    }
+    return count;
+}
+void display()
+{
+    if(head==NULL)
+    {
+        printf("list is empty");
+        return;
+    }
+    else
+    {
+    temp=head;
+    while(temp!=0)
+    {
+        printf("%d->",temp->data);
+        temp=temp->next;
+    }
+    }
+
+}
+void remove_dup()
+{
+    current=head;
+    while(current!=NULL)
+    {
+        ptr=current;
+
+        while(ptr->next!=NULL)
+        {
+            //ptr=ptr->next;
+            if(current->data==ptr->next->data)
+            {
+               temp=ptr->next;
+               ptr->next=ptr->next->next;
+               //ptr=ptr->next;
+               free(temp);
+              // break;
+            }
+
+            else
+               ptr=ptr->next;
+        }
+        current=current->next;
+    }
+}
+int main()
+{
+    int ch,num,res;
+    while(1)
+    {
+    printf("\nenter the choice 1.create_list 2.countnode 3.display 4.remove dup\n");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1:printf("enter the data:");
+               scanf("%d",&num);
+               create_list(num);
+               break;
+        case 2: res=count_nodes();
+               printf("\nnumber of nodes:%d",res);
+               break;
+        case 3:display();
+               break;
+        case 4:remove_dup();
+               break;
+       default:printf("enter valid choice:\n");
+               break;
+    }
+    }
+    return 0;
+}
