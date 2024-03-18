@@ -1,0 +1,28 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+void convert_number(int n)
+{
+    int temp,base=1,rem;
+    temp=n;
+    while(temp)
+    {
+        rem=temp%10;
+        if(rem==0)
+        {
+            n+=base;
+        }
+        base=base*10;
+        temp/=10;
+    }
+    printf("res=%d",n);
+}
+int main() {
+    // Write C code here
+    int n;
+    printf("enter the n value:");
+    scanf("%d",&n);
+    convert_number(n);
+    
+
+    return 0;
+}
