@@ -1,0 +1,14 @@
+#include <stdio.h>
+#define case(ch) ((ch>=65&&ch<=90)?printf("upper"):printf("lower"))
+int main() {
+    // Write C code here
+    char ch;
+    printf("enter the character:");
+    scanf("%c",&ch);
+    case(ch);
+    
+    
+
+    return 0;
+}
+==============================
